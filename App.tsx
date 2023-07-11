@@ -8,10 +8,13 @@ import {
     useColorScheme,
     View,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
 import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import {Route} from "./src/routing/Routing";
+import Home from "./src/screens/Home";
 
 function App(): JSX.Element {
     const isDarkMode = useColorScheme() === 'dark';
@@ -21,26 +24,24 @@ function App(): JSX.Element {
     };
     
     return (
-        <SafeAreaView style={backgroundStyle}>
-            <StatusBar
-                barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                backgroundColor={backgroundStyle.backgroundColor}
-            />
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                style={backgroundStyle}>
-                <View style={styles.container}>
-                    <Text>Hello World</Text>
-                </View>
-            </ScrollView>
-        </SafeAreaView>
+        <NavigationContainer>
+            <SafeAreaView style={backgroundStyle}>
+                <StatusBar
+                    barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+                    backgroundColor={backgroundStyle.backgroundColor}
+                />
+                <Home/>
+                <Route/>
+            </SafeAreaView>
+        </NavigationContainer>
+    
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        alignItems:'center',
-        justifyContent:'center',
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 });
 
