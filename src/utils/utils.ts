@@ -1,3 +1,4 @@
 export const routPaths = {
-    HOME : 'HOME'
-}
+  HOME: 'HOME',
+  LOGIN: 'LOGIN',
+};
