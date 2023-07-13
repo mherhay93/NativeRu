@@ -1,7 +1,8 @@
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
-import {routPaths} from '../../utils/utils';
+import {StyleSheet, Text, View} from 'react-native';
+import {colors, routPaths} from '../../utils/utils';
 import {navigate} from '../../helpers/navigate';
 import Touchable from '../../components/atoms/Touchable';
+import Layout from '../../components/moleculs/Layout';
 
 const Home = (): JSX.Element => {
   const handleNavigate = () => {
@@ -9,33 +10,37 @@ const Home = (): JSX.Element => {
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar animated={true} backgroundColor="#bc99d2" />
-      <Text style={styles.title}>Hello!!!!</Text>
-      <Touchable
-        styleText={styles.textTouchable}
-        title={'Get login!!!!'}
-        onPress={handleNavigate}
-      />
-    </View>
+    <Layout customStyle={styles.layout}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Hello!!!!</Text>
+        <Touchable
+          styleText={styles.textTouchable}
+          title={'Get login!!!!'}
+          onPress={handleNavigate}
+        />
+      </View>
+    </Layout>
   );
 };
 
 const styles = StyleSheet.create({
+  layout: {
+    backgroundColor: colors.mainBackground,
+  },
   container: {
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#bc99d2',
+    backgroundColor: colors.mainBackground,
     gap: 50,
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#4c0069',
+    color: colors.main,
   },
   textTouchable: {
-    color: '#c539e5',
+    color: colors.text,
     fontSize: 16,
   },
 });
