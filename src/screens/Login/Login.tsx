@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {
   Button,
   KeyboardAvoidingView,
@@ -10,30 +11,36 @@ import FieldInput from '../../components/atoms/FieldInput';
 import Layout from '../../components/moleculs/Layout';
 import {valueOnChange} from '../../types/types';
 import {colors} from '../../utils/utils';
+import {useAuth} from '../../hooksRequest/useAuth';
 
 const Login = (): JSX.Element => {
-  const handleValue = (val: valueOnChange) => {
-    console.log(5555);
-    console.log('val--------->', val);
+  const [data, setData] = useState({});
+  const {fetchData} = useAuth();
+  const handleValue = (val: valueOnChange, nameField: string) => {
+    setData(prev => ({
+      ...prev,
+      [nameField]: val,
+    }));
   };
-
+  const handleLogin = () => {
+    fetchData({data});
+  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
       <Layout>
         <Text style={styles.title}>Login</Text>
         <View style={styles.container}>
-          <FieldInput labelText={'Email'} onChange={val => handleValue(val)} />
+          <FieldInput
+            labelText={'Email'}
+            onChange={val => handleValue(val, 'email')}
+          />
           <FieldInput
             labelText={'Password'}
-            onChange={handleValue}
+            onChange={val => handleValue(val, 'password')}
             secureTextEntry
           />
-          <Button
-            // onPress={onPressLearnMore}
-            title="Login"
-            color={colors.main}
-          />
+          <Button onPress={handleLogin} title="Login" color={colors.main} />
         </View>
       </Layout>
     </KeyboardAvoidingView>

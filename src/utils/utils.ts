@@ -1,6 +1,15 @@
+import {IReqMethods} from '../types/types';
+
 export const routPaths = {
   HOME: 'HOME',
   LOGIN: 'LOGIN',
+};
+
+export const requestMethods: IReqMethods = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE',
 };
 
 // Styles

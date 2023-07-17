@@ -31,3 +31,16 @@ export type textContentTypes =
   | undefined;
 
 export type valueOnChange = string | number | undefined;
+
+export interface IReqMethods {
+  GET: 'GET';
+  POST: 'POST';
+  PUT: 'PUT';
+  DELETE: 'DELETE';
+}
+
+export interface IApi {
+  type: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  path: string;
+  data: any;
+}
