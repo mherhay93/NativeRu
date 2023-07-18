@@ -4,7 +4,7 @@ import {StatusBar, useColorScheme} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import {Route} from './src/routing/Routing';
+import Route from './src/routing/Routing';
 import {navigationRef} from './src/helpers/navigate';
 import {store} from './src/store/store';
 

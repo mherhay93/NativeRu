@@ -3,19 +3,24 @@ import {colors, routPaths} from '../../utils/utils';
 import {navigate} from '../../helpers/navigate';
 import Touchable from '../../components/atoms/Touchable';
 import Layout from '../../components/moleculs/Layout';
+import {useSelector} from 'react-redux';
+import {getSettings} from '../../store/settings/selectors';
 
 const Home = (): JSX.Element => {
+  const {isAuth} = useSelector(getSettings);
+
   const handleNavigate = () => {
-    navigate({name: routPaths.LOGIN});
+    navigate({name: isAuth ? routPaths.NEWS : routPaths.LOGIN});
   };
 
+  const title = isAuth ? 'Go to News !!!' : 'Go to login !!!';
   return (
     <Layout customStyle={styles.layout}>
       <View style={styles.container}>
         <Text style={styles.title}>Hello!!!!</Text>
         <Touchable
           styleText={styles.textTouchable}
-          title={'Get login!!!!'}
+          title={title}
           onPress={handleNavigate}
         />
       </View>

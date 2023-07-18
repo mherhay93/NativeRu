@@ -2,6 +2,7 @@ import {useDispatch} from 'react-redux';
 import {request} from '../api/api';
 import {requestMethods} from '../utils/utils';
 import {ActionsName, IRes} from '../store/settings/type';
+import {ActionsNameUser} from '../store/user/type';
 
 interface IAuth {
   data: any;
@@ -22,6 +23,10 @@ export const useAuth = () => {
           dispatch({
             type: ActionsName.AUTH,
             payload: true,
+          });
+          dispatch({
+            type: ActionsNameUser.USER,
+            payload: res.data,
           });
         }
       })

@@ -4,11 +4,17 @@ import {MyProp} from '../types/types';
 export const navigationRef = createNavigationContainerRef();
 
 interface IPropsNavigate {
-  name: string;
+  name?: string;
   params?: MyProp;
+  back?: boolean;
 }
-export function navigate({name, params}: IPropsNavigate) {
+export async function navigate({name, params, back}: IPropsNavigate) {
+  if (back) {
+    await navigationRef.goBack();
+    return;
+  }
   if (navigationRef.isReady()) {
-    navigationRef.navigate(name as never, params as never);
+    await navigationRef.navigate(name as never, params as never);
+    return;
   }
 }

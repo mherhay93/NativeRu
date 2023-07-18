@@ -1,19 +1,12 @@
-import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from '../screens/Home';
-import Login from '../screens/Login';
-import {routPaths} from '../utils/utils';
+import {useSelector} from 'react-redux';
+import AppStack from './AppStack';
+import AuthStack from './AuthStack';
+import {IStore} from '../store/types';
 
-export const Route = () => {
-  const Stack = createNativeStackNavigator();
+const Route = () => {
+  const {isAuth} = useSelector((state: IStore) => state.settings);
 
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}>
-      <Stack.Screen name={routPaths.HOME} component={Home} />
-      <Stack.Screen name={routPaths.LOGIN} component={Login} />
-    </Stack.Navigator>
-  );
+  return isAuth ? <AppStack /> : <AuthStack />;
 };
+
+export default Route;
