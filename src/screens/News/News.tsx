@@ -1,8 +1,16 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text} from 'react-native';
 import Layout from '../../components/moleculs/Layout';
 import Header from '../../components/moleculs/Header';
+import {useNews} from '../../hooksRequest/useNews';
+import {useEffect} from 'react';
 
 const News = () => {
+  const {fetchData} = useNews();
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
   return (
     <>
       <Header />

@@ -1,10 +1,17 @@
 export interface ITypeStateSettings {
   isAuth: boolean;
+  settings: ISettings;
 }
 
-export interface IActionIsHome {
-  type: string;
-  payload: boolean;
+export interface ISettings {
+  'access-token': string;
+  authorization: string;
+  client: string;
+}
+
+export interface IActionTypes<T, P> {
+  readonly type: T;
+  readonly payload?: P;
 }
 
 export interface IRes {
@@ -20,4 +27,5 @@ export interface IRes {
 
 export enum ActionsName {
   AUTH = 'AUTH',
+  SETTINGS = 'SETTINGS',
 }

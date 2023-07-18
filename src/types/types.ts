@@ -42,5 +42,5 @@ export interface IReqMethods {
 export interface IApi {
   type: 'GET' | 'POST' | 'PUT' | 'DELETE';
   path: string;
-  data: any;
+  data?: any;
 }

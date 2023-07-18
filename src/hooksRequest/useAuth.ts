@@ -28,6 +28,14 @@ export const useAuth = () => {
             type: ActionsNameUser.USER,
             payload: res.data,
           });
+          dispatch({
+            type: ActionsName.SETTINGS,
+            payload: {
+              'access-token': res.headers['access-token'],
+              authorization: res.headers.authorization,
+              client: res.headers.client,
+            },
+          });
         }
       })
       .catch((err: string) => console.log(err));
