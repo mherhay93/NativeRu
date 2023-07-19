@@ -1,3 +1,5 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+
 export type MyProp = {} | [] | string | number | boolean;
 export type textContentTypes =
   | 'none'
@@ -43,4 +45,7 @@ export interface IApi {
   type: 'GET' | 'POST' | 'PUT' | 'DELETE';
   path: string;
   data?: any;
+  id?: Readonly<any>;
 }
+
+export type PropsNavigation = NativeStackScreenProps<any>;

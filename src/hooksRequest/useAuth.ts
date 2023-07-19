@@ -18,7 +18,6 @@ export const useAuth = () => {
     })
       .then((response: IRes) => response)
       .then((res: IRes) => {
-        console.log(res, 'reqqq');
         if (res.status === 200) {
           dispatch({
             type: ActionsName.AUTH,

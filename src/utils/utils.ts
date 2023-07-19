@@ -4,6 +4,7 @@ export const routPaths = {
   HOME: 'HOME',
   LOGIN: 'LOGIN',
   NEWS: 'NEWS',
+  CARD_NEWS: 'CARD_NEWS',
 };
 
 export const requestMethods: IReqMethods = {
@@ -20,4 +21,5 @@ export const colors = {
   mainBackground: '#bc99d2',
   text: '#c539e5',
   white: 'white',
+  black: '#3f3939',
 };

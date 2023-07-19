@@ -1,4 +1,5 @@
-import {ActionsName, IActionTypes, ITypeStateSettings} from './type';
+import {ActionsName, ITypeStateSettings} from './type';
+import {IActionTypes} from '../types';
 
 const initialState: ITypeStateSettings = {
   isAuth: false,

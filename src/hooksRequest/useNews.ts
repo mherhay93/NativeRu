@@ -2,10 +2,7 @@ import {useDispatch} from 'react-redux';
 import {request} from '../api/api';
 import {requestMethods} from '../utils/utils';
 import {IRes} from '../store/settings/type';
-
-interface INews {
-  data: any;
-}
+import {ActionsName} from '../store/news/type';
 
 export const useNews = () => {
   const dispatch = useDispatch();
@@ -16,11 +13,32 @@ export const useNews = () => {
     })
       .then((response: IRes) => response)
       .then((res: IRes) => {
-        console.log(res, 'reqqq');
         if (res.status === 200) {
+          dispatch({
+            type: ActionsName.NEWS_LIST,
+            payload: res.data,
+          });
         }
       })
       .catch((err: string) => console.log(err));
   };
-  return {fetchData};
+
+  const fetchDataOneNews = (id?: Readonly<any>) => {
+    return request({
+      path: 'news/',
+      type: requestMethods.GET,
+      id,
+    })
+      .then((response: IRes) => response)
+      .then((res: IRes) => {
+        if (res.status === 200) {
+          dispatch({
+            type: ActionsName.NEWS,
+            payload: res.data,
+          });
+        }
+      })
+      .catch((err: string) => console.log(err));
+  };
+  return {fetchData, fetchDataOneNews};
 };

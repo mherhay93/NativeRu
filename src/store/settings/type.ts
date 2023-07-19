@@ -9,11 +9,6 @@ export interface ISettings {
   client: string;
 }
 
-export interface IActionTypes<T, P> {
-  readonly type: T;
-  readonly payload?: P;
-}
-
 export interface IRes {
   config: object;
   data: object;
