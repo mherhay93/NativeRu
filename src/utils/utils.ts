@@ -14,6 +14,11 @@ export const requestMethods: IReqMethods = {
   DELETE: 'DELETE',
 };
 
+export const statuses = {
+  ERROR: 'ERROR',
+  SUCCSESS: 'SUCCSESS',
+};
+
 // Styles
 
 export const colors = {
@@ -22,4 +27,5 @@ export const colors = {
   text: '#c539e5',
   white: 'white',
   black: '#3f3939',
+  red: 'red',
 };

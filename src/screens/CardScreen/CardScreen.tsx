@@ -19,13 +19,15 @@ const CardScreen = ({route}: PropsNavigation) => {
     fetchDataOneNews(id);
   }, []);
 
+  const uri = image_url ? image_url : 'https://picsum.photos/200';
+
   return (
     <>
       <Header />
       <Layout>
         <ScrollView>
           <View style={style.headerContainer}>
-            <Image source={{uri: image_url, width: 100, height: 100}} />
+            <Image source={{uri, width: 100, height: 100}} />
             <Text style={style.title}>{title}</Text>
           </View>
           <Text>{body}</Text>

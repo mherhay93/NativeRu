@@ -1,8 +1,9 @@
 import {useDispatch} from 'react-redux';
 import {request} from '../api/api';
-import {requestMethods} from '../utils/utils';
+import {requestMethods, statuses} from '../utils/utils';
 import {ActionsName, IRes} from '../store/settings/type';
 import {ActionsNameUser} from '../store/user/type';
+import {useState} from 'react';
 
 interface IAuth {
   data: any;
@@ -10,6 +11,7 @@ interface IAuth {
 
 export const useAuth = () => {
   const dispatch = useDispatch();
+  const [status, setStatus] = useState('');
   const fetchData = ({data}: IAuth) => {
     return request({
       data: data,
@@ -35,9 +37,14 @@ export const useAuth = () => {
               client: res.headers.client,
             },
           });
+        } else {
+          setStatus(statuses.ERROR);
         }
       })
-      .catch((err: string) => console.log(err));
+      .catch((err: string) => {
+        console.log(err);
+        setStatus(statuses.ERROR);
+      });
   };
-  return {fetchData};
+  return {fetchData, status};
 };
